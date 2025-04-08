@@ -207,6 +207,10 @@ int platform_dump_status(char *dump, int size)
 	int i, j, writed;
 	char *tmp = dump;
 
+	if (size < 2047) {
+		return TEE_ERROR_BAD_PARAMETERS;
+	}
+
 	writed = snprintf(tmp, size, "SDP STUB platform\n");
 	tmp += writed;
 	size -= writed;
